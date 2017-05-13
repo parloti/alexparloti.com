@@ -1,7 +1,7 @@
 (function (angular) {
 	'use strict';
 	angular
-		.module('portfolio', ['ngAnimate', 'ng.deviceDetector'])
+		.module('portfolio', ['ngAnimate', 'ngMaterial', 'ng.deviceDetector'])
 		.directive('onFinishRender', function ($timeout) {
 			return {
 				restrict: 'A',
@@ -97,9 +97,184 @@
 							caption: 'Add Me to Your Contacts List'
 						},
 					]
+				},
+				{
+					name: 'Footer',
+					iconClass: 'fa fa-arrow-down',
+					isVisible: true,
+					isActive: true
 				}
 			];
 			$scope.sections = $scope.boards;
+			
+			$scope.messengersCards = [
+				{
+					name: 'Skype',
+					links: {
+						android: 'play.google.com/store/apps/details?id=com.skype.raider',
+						ios: 'itunes.apple.com/app/id304878510',
+						browserLink: 'web.skype.com'
+					},
+					iconClass: 'fa fa-skype',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					name: 'Telegram',
+					links: {
+						android: 'play.google.com/store/apps/details?id=org.telegram.messenger',
+						ios: 'itunes.apple.com/app/id686449807',
+						browserLink: 'web.telegram.org'
+					},
+					iconClass: 'fa fa-telegram',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					name: 'WhatsApp',
+					links: {
+						android: 'play.google.com/store/apps/details?id=com.whatsapp',
+						ios: 'itunes.apple.com/app/id310633997',
+						browserLink: 'web.whatsapp.com'
+					},
+					iconClass: 'fa fa-whatsapp',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					name: 'Facebook Messenger',
+					links: {
+						android: 'play.google.com/store/apps/details?id=com.facebook.orca',
+						ios: 'itunes.apple.com/app/id454638411',
+						browserLink: 'messenger.com'
+					},
+					iconClass: 'fa fa-comments fa-messenger',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					name: 'Google Allo',
+					links: {
+						android: 'play.google.com/store/apps/details?id=com.google.android.apps.fireball',
+						browserLink: 'allo.google.com'
+					},
+					iconClass: 'fa fa-comments fa-allo',
+					isVisible: true,
+					isActive: true
+				}
+			];
+			$scope.open = function (board) {
+				console.log(board);
+			}
+			$scope.$on('renderedModal', function (ngRepeatFinishedEvent) {
+				function b(b) {
+					return this.each(function () {
+						var d = a(this)
+							, e = d.data("bs.affix")
+							, f = "object" == typeof b && b;
+						e || d.data("bs.affix", e = new c(this, f)),
+						"string" == typeof b && e[b]()
+					})
+				}
+				
+				$(window).on("load", function () {
+					return;
+					$('[data-spy="affix"]').each(function () {
+						var c = $(this)
+							, d = c.data();
+						d.offset = d.offset || {},
+						null != d.offsetBottom && (d.offset.bottom = d.offsetBottom),
+						null != d.offsetTop && (d.offset.top = d.offsetTop),
+							b.call(c, d)
+					})
+				})
+				//$('#AboutModal').modal('show');
+				//$('nav a:eq(3)').tab('show');
+				$('#form-message').validator();
+				$('#form-message').on('submit', function (e) {
+					if (!e.isDefaultPrevented()) {
+						let url = "index.php";
+						let data = $(this).serialize();
+						$.ajax({
+							type: "POST",
+							url: url,
+							data: data,
+							success: function (data) {
+								let messageAlert = 'alert-' + data.type;
+								let messageText = data.message;
+								let alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+								if (messageAlert && messageText) {
+									$('#form-message').find('.messages').html(alertBox);
+									$('#form-message')[0].reset();
+								}
+							}
+						});
+						return false;
+					}
+				})
+				function adjust_body_offset() {
+					return;
+					$('body').css('padding-top', $('#navbar').outerHeight(true) + 'px');
+				}
+				
+				$(window).resize(adjust_body_offset);
+				function smoothScrolling() {
+					$("nav a").on('click', function (e) {
+						e.preventDefault();
+						$('html, body').animate({
+								scrollTop: $($(this).attr("href")).offset().top - $('.navbar').outerHeight(true)
+							},
+							1500
+						)
+					});
+				}
+				
+				smoothScrolling();
+				
+			})
+		}])
+		
+		.controller('ContactForm', ['$scope', function ($scope) {
+			$scope.fields = [
+				{
+					id: 'name',
+					label: 'Name',
+					type: 'text',
+					required: true,
+					dataError: 'Please fill out this field.',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					id: 'email',
+					label: 'E-Mail',
+					type: 'email',
+					required: true,
+					dataError: 'That email address is invalid.',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					id: 'phone',
+					label: 'Phone',
+					type: 'tel',
+					required: false,
+					dataError: '',
+					isVisible: true,
+					isActive: true
+				},
+				{
+					id: 'subject',
+					label: 'Subject',
+					type: 'text',
+					required: true,
+					dataError: 'Please fill out this field.',
+					isVisible: true,
+					isActive: true
+				}
+			]
+		}])
+		.controller('SocialDeck', ['$scope', function ($scope) {
 			$scope.socialCards = [
 				{
 					name: 'LinkedIn',
@@ -179,104 +354,18 @@
 					isActive: true
 				}
 			];
-			$scope.messengersCards = [
-				{
-					name: 'Skype',
-					links: {
-						android: 'play.google.com/store/apps/details?id=com.skype.raider',
-						ios: 'itunes.apple.com/app/id304878510',
-						browserLink: 'web.skype.com'
-					},
-					iconClass: 'fa fa-skype',
-					isVisible: true,
-					isActive: true
-				},
-				{
-					name: 'Telegram',
-					links: {
-						android: 'play.google.com/store/apps/details?id=org.telegram.messenger',
-						ios: 'itunes.apple.com/app/id686449807',
-						browserLink: 'web.telegram.org'
-					},
-					iconClass: 'fa fa-telegram',
-					isVisible: true,
-					isActive: true
-				},
-				{
-					name: 'WhatsApp',
-					links: {
-						android: 'play.google.com/store/apps/details?id=com.whatsapp',
-						ios: 'itunes.apple.com/app/id310633997',
-						browserLink: 'web.whatsapp.com'
-					},
-					iconClass: 'fa fa-whatsapp',
-					isVisible: true,
-					isActive: true
-				},
-				{
-					name: 'Facebook Messenger',
-					links: {
-						android: 'play.google.com/store/apps/details?id=com.facebook.orca',
-						ios: 'itunes.apple.com/app/id454638411',
-						browserLink: 'messenger.com'
-					},
-					iconClass: 'fa fa-comments fa-messenger',
-					isVisible: true,
-					isActive: true
-				},
-				{
-					name: 'Google Allo',
-					links: {
-						android: 'play.google.com/store/apps/details?id=com.google.android.apps.fireball',
-						browserLink: 'allo.google.com'
-					},
-					iconClass: 'fa fa-comments fa-allo',
-					isVisible: true,
-					isActive: true
+		}])
+		.controller('ProgressBar', ['$scope', '$window', function ($scope, $window) {
+			$scope.value = 0;
+			angular.element($window).on('scroll', () => {
+				let scrolled = $(document).scrollTop();
+				let maxScroll = $(document).height() - document.documentElement.clientHeight;
+				let percent = 100 * scrolled / maxScroll;
+				if (percent > 100) {
+					percent = 100;
 				}
-			];
-			$scope.open = function (board) {
-				console.log(board);
-			}
-			$scope.$on('renderedModal', function (ngRepeatFinishedEvent) {
-				//$('#AboutModal').modal('show');
-				//$('nav a:eq(3)').tab('show');
-				$('#form-message').validator();
-				$('#form-message').on('submit', function (e) {
-					if (!e.isDefaultPrevented()) {
-						let url = "index.php";
-						let data = $(this).serialize();
-						$.ajax({
-							type: "POST",
-							url: url,
-							data: data,
-							success: function (data) {
-								let messageAlert = 'alert-' + data.type;
-								let messageText = data.message;
-								let alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-								if (messageAlert && messageText) {
-									$('#form-message').find('.messages').html(alertBox);
-									$('#form-message')[0].reset();
-								}
-							}
-						});
-						return false;
-					}
-				})
-				function adjust_body_offset() {
-					$('body').css('padding-top', $('#navbar').outerHeight(true) + 'px');
-				}
-				
-				$(window).resize(adjust_body_offset);
-				$(document).ready(adjust_body_offset);
-				$("header nav a").on('click', function (e) {
-					e.preventDefault();
-					$('html, body').animate({
-							scrollTop: $($(this).attr("href")).offset().top - $('#navbar').outerHeight(true)
-						},
-						1500
-					)
-				});
-			})
-		}]);
+				$scope.value = percent;
+				$scope.$digest();
+			});
+		}])
 })(window.angular);

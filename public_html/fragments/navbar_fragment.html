@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default navbar-fixed-top" data-spy="affix" data-offset-top="90">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span ng-repeat="i in [0,1,2]" class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#home">
+                <span class="fa fa-home" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-repeat="section in sections| filter:{isVisible:true}" class="{{$index==0?'active':''}}">
+                    <a href="#{{section.name.toLowerCase()}}">
+                        <span class="{{section.iconClass}}" aria-hidden="true"></span>
+                        <span ng-bind="section.name"></span>
+                        <span ng-if="$index==0" class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
