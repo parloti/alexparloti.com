@@ -1,0 +1,29 @@
+<div ng-controller="Projects" class="col-md-12 text-center">
+    <div class="page-header">
+        <h1>Recent Projects</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="project in projects">
+                <div class="thumbnail">
+                    <div class="thumbnail-img-wrapper">
+                        <img ng-src="images/{{project.image}}" alt="{{project.title}}">
+                    </div>
+                    <div class="caption">
+                        <h3 ng-bind="project.title"></h3>
+                        <p ng-bind="project.description"></p>
+                        <p>
+                            <a class="btn btn-primary" ng-href={{project.links.github}} target="_blank" title="GitHub">
+                                <span class="fa fa-github" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-primary" ng-href={{project.links.project}} target="_blank"
+                               title="Project">
+                                <span class="fa fa-globe" aria-hidden="true"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
