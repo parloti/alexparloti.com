@@ -1,0 +1,128 @@
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar-default {
+    background: 0 0;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+    padding: 15px 0;
+    border-color: rgba(255, 255, 255, .1)
+}
+
+@media (max-width: 767px) {
+    .navbar-default {
+        box-shadow: none;
+        border: none;
+        background-color: #111
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix {
+        padding: 5px;
+        background-color: #111;
+        border: none
+    }
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    background-color: transparent;
+    transition: all .3s ease
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+    transition: all .3s ease
+}
+
+.navbar-default .navbar-brand {
+    padding: 0
+}
+
+.navbar-brand > span {
+    height: 100%;
+    padding: 10px 15px;
+    width: auto
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #222
+}
+
+.navbar-toggle span {
+    color: #FFF
+}
+
+.navbar-default .navbar-collapse {
+    border-color: rgba(255, 255, 255, .1)
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+    transition: all .3s ease;
+    font-size: 14px;
+    padding-left: 40px
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix .nav > li > a {
+        color: #8c8c8c
+    }
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #FFF;
+    background-color: transparent
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix .navbar-nav > .active > a {
+        color: #FFF
+    }
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+    color: #FFF
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix .nav > li > a:focus {
+        color: #8c8c8c
+    }
+}
+
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #FFF;
+    background-color: transparent
+}
+
+@media (min-width: 768px) {
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #FFF
+    }
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #FFF
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix .nav > li > a:hover {
+        color: #FFF;
+        border-bottom: none
+    }
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+    color: #FFF;
+    background-color: transparent
+}
+
+@media (min-width: 768px) {
+    .navbar-default.affix .navbar-nav > .active > a:hover {
+        color: #FFF
+    }
+}
