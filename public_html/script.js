@@ -213,11 +213,11 @@
 					}
 				})
 				function adjust_body_offset() {
-					return;
-					$('body').css('padding-top', $('#navbar').outerHeight(true) + 'px');
+					$('#about').css('padding-top', $('nav').outerHeight(true) + 'px');
 				}
 				
 				$(window).resize(adjust_body_offset);
+				adjust_body_offset();
 				function smoothScrolling() {
 					$("nav a").on('click', function (e) {
 						e.preventDefault();
@@ -230,7 +230,14 @@
 				}
 				
 				smoothScrolling();
-				
+				$(document).ready(function () {
+					"use strict";
+					$("nav").affix({
+						offset: {
+							top: 100
+						}
+					})
+				});
 			})
 		}])
 		.controller('Projects', ['$scope', function ($scope) {
