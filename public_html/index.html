@@ -12,19 +12,18 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,500,600,700">
     <link href="animations.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="styles/navbar.css">
 </head>
 <body id="home" ng-controller="repeatController" data-spy="scroll" data-target=".navbar" data-offset="70" ng-cloak>
 <div class="slide-animate" ng-init="navBar={url:'fragments/navbar_fragment.html'}" ng-include="navBar.url">
 </div>
+
 <section ng-repeat="section in sections | filter:{isVisible:true}" id="{{section.name.toLowerCase()}}">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="container-fluid">
-                    <div class="slide-animate row"
-                         ng-include="'fragments/'+(section.name.toLowerCase()+'_fragment.html')">
-                    </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="slide-animate row"
+                     ng-include="'fragments/'+(section.name.toLowerCase()+'_fragment.html')">
                 </div>
             </div>
         </div>
@@ -262,8 +261,6 @@
     </div>
 </div>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/bootstrap-validator/dist/validator.min.js"></script>
 
 <script src="../node_modules/angular/angular.min.js"></script>
 <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
@@ -272,6 +269,9 @@
 
 <script src="../node_modules/re-tree/re-tree.min.js"></script>
 <script src="../node_modules/ng-device-detector/ng-device-detector.min.js"></script>
+
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/bootstrap-validator/dist/validator.min.js"></script>
 
 <script type="text/javascript" src="script.js"></script>
 </body>
