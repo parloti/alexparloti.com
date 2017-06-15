@@ -1,11 +1,32 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+
 html, body {
     min-height: 100%;
     width: 100%;
 }
 
 body {
-    font-family: 'Fira Sans Condensed', sans-serif;
-    color: #222
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #555;
+}
+.social-deck .fa {
+    font-size: 3em;
+}
+
+.social-deck .btn {
+    flex: 1;
+    color: white;
+    margin: 5px;
+}
+
+.social-deck {
+    margin: 0 auto;
+    display: inline-flex;
+}
+
+.btn-secondary {
+    border-width: 2px;
+    border-color: #fff;
 }
 
 [data-spy="scroll"] {
@@ -31,20 +52,27 @@ section {
     color: #FFF;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
+    /*display: flex;
+    align-items: center;*/
 }
 
 @media (max-width: 767px) {
-    #about {
+    x#about {
         top: auto;
         left: auto
     }
 }
 
-#about x.container-fluid {
+#about .container-fluid {
     height: 100%;
+}
 
+@media (min-width: 768px) {
+    #about .row {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .profile, .profile::before {
@@ -121,6 +149,7 @@ button.barcode {
 
 #footer {
     background-color: #00c6ff;
+    padding-bottom: 20px;
 }
 
 .SkypeButton {
