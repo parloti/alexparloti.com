@@ -39,17 +39,14 @@ $condition = $forecast->getCurrentConditions($latitude, $longitude);
 //echo 'Current temperature: '.$condition->getTemperature(). "\n";
 $result['temperature']=$condition->getTemperature();
 $result['unit']='Celsius';
-				------+\\
-
-
-
-
-
-
-
-
-/,
+$result['summary']=$condition->getSummary();
 $result['icon']=$condition->getIcon();
+$result['wind']=[];
+$result['wind']['speed']=$condition->getWindSpeed()*3.6;
+$result['wind']['direction']=$condition->getWindBearing();
+$result['wind']['unit']='Km/h';
+
+		
 /*
  * GET HOURLY CONDITIONS FOR TODAY
  */

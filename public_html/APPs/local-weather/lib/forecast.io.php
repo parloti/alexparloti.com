@@ -18,7 +18,7 @@ class ForecastIO
      * @param String $units
      * @param String $language
      */
-    function __construct($api_key, $units = 'auto', $language = 'en')
+    function __construct($api_key, $units = 'si', $language = 'en')
     {
 
         $this->api_key = $api_key;
