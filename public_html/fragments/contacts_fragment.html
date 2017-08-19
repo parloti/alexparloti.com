@@ -17,8 +17,9 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                         <h4 class="modal-title" id="myModalLabel">Add me to your contact list</h4>
                                     </div>
                                     <div class="modal-body">
@@ -39,7 +40,7 @@
                     <h5 class="mt-2">
                         <span class="fa fa-envelope-o" aria-hidden="true"></span> Contact Me
                     </h5>
-                    <form id="form-message" class="mt-3 text-left" data-toggle="validator" role="form" method="post" ng-controller="ContactForm">
+                    <form id="form-message" class="mt-3 text-left" data-toggle="validator" role="form" method="post" ng-controller="contactFormController">
                         <div class="messages"></div>
                         <div class="container-fluid" ng-repeat="field in fields | filter:{isVisible:true}">
                             <div class="form-group row">

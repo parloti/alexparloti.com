@@ -3,7 +3,7 @@
         <h1>Around the Web</h1>
     </div>
     <div class="container-fluid">
-        <div ng-controller="SocialDeck">
+        <div ng-controller="socialDeckController">
             <ul class="list-inline social-deck">
                 <li ng-repeat="card in socialCards | filter:{isVisible:true}">
                     <a class="btn btn-secondary" href="http://{{card.href}}" aria-label="{{card.name}}" target="_blank" title="{{card.name}}">
@@ -13,7 +13,7 @@
             </ul>
         </div>
     </div>
-    <div ng-controller="ProgressBar">
+    <div ng-controller="progressBarController">
         <md-progress-linear md-mode="determinate" value="{{value}}"></md-progress-linear>
     </div>
 </div>

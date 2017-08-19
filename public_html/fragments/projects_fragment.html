@@ -1,4 +1,4 @@
-<div ng-controller="Projects" class="col-md-12 text-center">
+<div ng-controller="projectsController" class="col-md-12 text-center">
     <div class="page-header">
         <h1>Recent Projects</h1>
     </div>
@@ -16,8 +16,7 @@
                             <a class="btn btn-primary" ng-href={{project.links.github}} target="_blank" title="GitHub">
                                 <span class="fa fa-github" aria-hidden="true"></span>
                             </a>
-                            <a class="btn btn-primary" ng-href={{project.links.project}} target="_blank"
-                               title="Project">
+                            <a class="btn btn-primary" ng-href={{project.links.project}} target="_blank" title="Project">
                                 <span class="fa fa-globe" aria-hidden="true"></span>
                             </a>
                         </p>
